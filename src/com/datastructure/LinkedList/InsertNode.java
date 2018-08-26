@@ -37,21 +37,22 @@ public class InsertNode {
 	}
 
 	public void insertInMiddleNode(LinkedList llist, int NodeData) {
-		int count = 0;
-		int mid = llist.size()/2;
+		int count = 1;
+		int mid = ((llist.size() % 2) == 0) ? (llist.size() / 2) :
+            (llist.size() + 1) / 2;
 		Node n = llist.head;
 		while(n!=null){
 		//	System.out.print(n.data+ " ");
 		
 			if(mid == count){
-				//System.out.println(llist.size()/2);
+			//	System.out.println(" mid"+mid);
 				Node mNode = new Node(NodeData);
 				Node tNode = n.next;
 				n.next = mNode;
 				mNode.next = tNode;
 			}
 			n = n.next;
-			count ++;
+			count++;
 		}
 		System.out.println();
 		llist.display();
@@ -61,8 +62,8 @@ public class InsertNode {
 
 	public static void main(String[] args) {
 		InsertNode insertNode = new InsertNode();
-		LinkedList llist = insertNode.createLinkedList(4);
-		insertNode.insertInMiddleNode(llist, 7);  
+		LinkedList llist = insertNode.createLinkedList(8);
+		insertNode.insertInMiddleNode(llist, 0);  
 		
 	}
 
