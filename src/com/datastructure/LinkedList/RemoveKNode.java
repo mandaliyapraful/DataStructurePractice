@@ -45,7 +45,7 @@ public class RemoveKNode {
 		RemoveKNode kNode = new RemoveKNode();
 		kNode.createNode(link, 4);
 		System.out.println(link.toString());
-		kNode.removeNode(link, 3);
+		kNode.removeNode(link, 0);
 		System.out.println(link.toString());
 	}
 

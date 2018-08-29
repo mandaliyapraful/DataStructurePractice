@@ -7,7 +7,7 @@ package com.datastructure.LinkedList;
  * @author Mandaliya
  *
  */
-public class InsertNode {
+public class ReverseLinkedList {
 
 	public LinkedList createLinkedList(int size) {
 
@@ -36,35 +36,34 @@ public class InsertNode {
 		return llist;
 
 	}
-
-	public void insertInMiddleNode(LinkedList llist, int NodeData) {
-		int count = 1;
-		int mid = ((llist.size() % 2) == 0) ? (llist.size() / 2) :
-            (llist.size() + 1) / 2;
-		Node n = llist.head;
-		while(n!=null){
-		//	System.out.print(n.data+ " ");
-		
-			if(mid == count){
-			//	System.out.println(" mid"+mid);
-				Node mNode = new Node(NodeData);
-				Node tNode = n.next;
-				n.next = mNode;
-				mNode.next = tNode;
-			}
-			n = n.next;
-			count++;
+	
+	public Node reverseLinkedList(Node head){
+		//Node head = llist.head;
+		Node prev = null;
+		Node curr = head;
+		Node next = null;
+		while(curr!=null){//second loop
+			next = curr.next;//2
+			curr.next = prev;//3
+			prev = curr;//1
+			curr = next;//2
 		}
+		head = prev;//twist //1->0
+		return head;
+	}
+	
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
+		LinkedList llist=reverseLinkedList.createLinkedList(6);
+		//llist.display();
+		llist.head=reverseLinkedList.reverseLinkedList(llist.head);
 		System.out.println();
 		llist.display();
-		
-
-	}
-
-	public static void main(String[] args) {
-		InsertNode insertNode = new InsertNode();
-		LinkedList llist = insertNode.createLinkedList(3);
-		insertNode.insertInMiddleNode(llist, 0);  
 		
 	}
 

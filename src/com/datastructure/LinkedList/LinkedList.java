@@ -31,6 +31,33 @@ public class LinkedList {
 		return count;
 	}
 	
+	public LinkedList createLinkedList(int size) {
+
+		LinkedList llist = new LinkedList();
+		//prev node  
+		Node pNode = null;
+		// loop till the size mentioned
+		for (int i = 0; i < size; i++) {
+			if (llist.head == null) { // check if head is null
+				llist.head = new Node(i);
+			} else {
+				Node iNode = new Node(i); // create a node and assign it to
+											// head.next
+				if (llist.head.next == null) {
+					llist.head.next = iNode;
+					pNode = iNode; // set prev node for linking
+				} else {
+					Node cNode = new Node(i); // create a current node
+					pNode.next = cNode; // prev node next to point current node
+					pNode = cNode; // set prev node to current node
+				}
+			}
+
+		}
+		llist.display();
+		return llist;
+
+	}
 
 	/**
 	 * @param args
