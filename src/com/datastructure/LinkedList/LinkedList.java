@@ -58,6 +58,12 @@ public class LinkedList {
 		return llist;
 
 	}
+	
+	public void push(int data){
+		Node new_node = new Node(data);
+		new_node.next = head;
+		head = new_node;
+	}
 
 	/**
 	 * @param args
