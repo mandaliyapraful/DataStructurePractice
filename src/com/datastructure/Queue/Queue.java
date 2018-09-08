@@ -72,7 +72,7 @@ public class Queue {
 		queue.display();
 		System.out.println();
 		
-/*		queue.remove();
+/*		queue.remove();a
 		queue.remove();
 		queue.display();
 */		
