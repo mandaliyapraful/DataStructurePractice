@@ -28,7 +28,7 @@ public class Stack {
 			System.out.println("Sorry the stack is full");
 		}
 		displayStack();
-		System.out.println();
+		System.out.println("");
 		System.out.printf("Push [%s] was done to the stack", input);
 	}
 
@@ -61,6 +61,18 @@ public class Stack {
 		return stackArray[topOfStack];
 	}
 
+	public void pushAll(String values){
+		String arysVal[] = values.split(" ");
+		for(int i = 0 ;i < arysVal.length;i++){
+			push(arysVal[i]);
+		}
+	}
+	
+	public void popAll(){
+		for(int i = topOfStack;i >= 0;i--){
+			pop();
+		}
+	}
 	public static void main(String[] args) {
 		Stack  stack = new Stack(10);
 		stack.pop();
@@ -72,7 +84,10 @@ public class Stack {
 		stack.push("58");
 		stack.push("60");
 		stack.pop();
+
 		System.out.println();
 		stack.peek();
+		stack.pushAll("21 22 23 24");
+		stack.popAll();
 	}
 }
