@@ -44,17 +44,37 @@ public class Queue {
 	}
 	public void display(){
 		System.out.println();
-		for(int i = front;i <= rear ;i ++){
+		for(int i = 0;i < queueSize ;i ++){
 			if(i == front ){
-				System.out.printf("[%s] - [%s] ",queueArray[front],"Front");
+				System.out.printf("["+i+"] - [%s] - [%s] ",queueArray[front],"Front");
 			}else if(i == rear){
-				System.out.printf("[%s] - [%s] ",queueArray[rear],"Rear");
+				System.out.printf("["+i+"] - [%s] - [%s] ",queueArray[rear],"Rear");
 			}else{
-				System.out.printf("[%s] ",queueArray[i]);
+				System.out.printf("["+i+"] - [%s] ",queueArray[i]);
 			}
 			System.out.println();
 		}
 		
+	}
+	
+	public void priorityInsert(String input){
+		int i;
+		if(numberOfItem == 0){
+			insert(input);
+		}else{
+			for (i = numberOfItem-1;i >=0 ;i--){
+				if(Integer.parseInt(input) > Integer.parseInt(queueArray[i])){
+					queueArray[i+1] = queueArray[i];
+					
+				}else{
+					break;
+				}
+			}
+
+			queueArray[i+1] = input;
+			rear++;
+			numberOfItem++;
+		}
 	}
 	public static void main(String[] args) {
 		Queue queue = new Queue(10);
@@ -72,6 +92,13 @@ public class Queue {
 		queue.display();
 		System.out.println();
 		
+		Queue pQueue = new Queue(5);
+		pQueue.priorityInsert("50");
+		pQueue.priorityInsert("10");
+		pQueue.priorityInsert("80");
+		pQueue.priorityInsert("60");
+		pQueue.priorityInsert("15");
+		pQueue.display();
 /*		queue.remove();a
 		queue.remove();
 		queue.display();
