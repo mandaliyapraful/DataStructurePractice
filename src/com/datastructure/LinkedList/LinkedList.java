@@ -78,6 +78,11 @@ public class LinkedList {
 		llist.head.next = second;
 		
 		second.next = third;
+		
+		/*llist.push(1);
+		llist.push(2);
+		llist.push(3);
+		System.out.println(llist.head.data);*/
 		llist.display();
 		
 	}
