@@ -108,11 +108,37 @@ public class BinaryTree {
 			}
 		}
 	}
+	
+	public void addNode(int key){
+		Node new_Node = new Node(key);
+		if(root == null){
+			root = new_Node;
+		}else{
+			Node focus_Node = root;
+			Node parent;
+			while(true){
+				parent = focus_Node;
+				if(key < focus_Node.key){
+					focus_Node = focus_Node.left;
+					if(focus_Node == null){
+						parent.left = new_Node;
+						return;
+					}
+				}else{
+					focus_Node = focus_Node.right;
+					if(focus_Node == null){
+						parent.right = new_Node;
+						return;
+					}
+				}
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 		
 		BinaryTree binaryTree = new BinaryTree();
-		
+/*		
 		binaryTree.root = new Node(1);
 		
 		binaryTree.root.left = new Node(2);
@@ -125,8 +151,22 @@ public class BinaryTree {
 		
 		binaryTree.root.left.left = new Node(4);
 		
-		binaryTree.root.left.right = new Node(5);
+		binaryTree.root.left.right = new Node(5);*/
 		
+		binaryTree.addNode(50);
+		binaryTree.addNode(25);
+		binaryTree.addNode(15);
+		binaryTree.addNode(30);
+		binaryTree.addNode(75);
+		binaryTree.addNode(85);
+		/*
+		 * Tree structure
+				50
+			   /  \
+			 25    30
+		    /  \     \
+	 	  15   30     85
+	 	*/
 		System.out.println("InOrder");
 		binaryTree.printInOrder(binaryTree.root);
 		System.out.println();
@@ -135,6 +175,7 @@ public class BinaryTree {
 		System.out.println();
 		System.out.println("PostOrder");
 		binaryTree.printPostOrder(binaryTree.root);
+		System.out.println();
 		System.out.println("LevelOrder");
 		System.out.println();
 		binaryTree.levelOrder();
