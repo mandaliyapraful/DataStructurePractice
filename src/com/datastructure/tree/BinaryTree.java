@@ -110,21 +110,29 @@ public class BinaryTree {
 	}
 	
 	public void addNode(int key){
+		//create the new node
 		Node new_Node = new Node(key);
+		//check if the root node is null
 		if(root == null){
 			root = new_Node;
 		}else{
+			//create a focus node and assign root node to it
 			Node focus_Node = root;
+			//refernce parent node
 			Node parent;
-			while(true){
+			while(true){ 
+				//parent is the focus node
 				parent = focus_Node;
+				//if given node key is less then focus node
 				if(key < focus_Node.key){
+					//move focus to its left node
 					focus_Node = focus_Node.left;
 					if(focus_Node == null){
 						parent.left = new_Node;
 						return;
 					}
 				}else{
+					//move the focus to right node
 					focus_Node = focus_Node.right;
 					if(focus_Node == null){
 						parent.right = new_Node;
@@ -134,6 +142,7 @@ public class BinaryTree {
 			}
 		}
 	}
+	
 
 	public static void main(String[] args) {
 		
